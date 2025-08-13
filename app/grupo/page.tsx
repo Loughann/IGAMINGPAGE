@@ -6,6 +6,18 @@ import { MessageCircle, TrendingUp, Users, Shield } from "lucide-react"
 export default function GrupoPage() {
   const whatsappLink = "https://chat.whatsapp.com/JgKO4VDSoep698uYQiTktn?mode=ac_t"
 
+  const handleWhatsAppClick = () => {
+    // Track conversion event when user clicks WhatsApp button
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "Lead", {
+        content_name: "WhatsApp Group Access",
+        content_category: "Betting Group",
+        value: 1,
+        currency: "BRL",
+      })
+    }
+  }
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Image with Overlay */}
@@ -73,6 +85,7 @@ export default function GrupoPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center space-x-3"
+                onClick={handleWhatsAppClick}
               >
                 <MessageCircle className="w-6 h-6" />
                 <span>Entrar no Grupo WhatsApp</span>
